@@ -1,0 +1,57 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.navigationItem {
+    margin: 10px 10px 10px 10px;
+    border-bottom: 2px solid transparent;
+    color: black;
+    text-decoration: none;
+    transition: opacity 5s;
+}
+
+.navigationItem:hover {
+    border-bottom: 2px solid rgb(231, 231, 231);
+}
+
+
+.open {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    align-items: center;
+    position: absolute;
+
+
+    .burger {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+
+    .navigationItem {
+        display: inline !important;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .navigationItem {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+
+        &.brand {
+            display: inline;
+            visibility: visible;
+            opacity: 1;
+            order: -1;
+        }
+    }
+}
