@@ -14,15 +14,21 @@ class Navigation extends Component {
     return (
       <div className={navclass}>
         <AnchorLink className="navigationItem" href="#timeline">
-          Timeline
+          <div onClick={this.closeNav}>Timeline</div>
         </AnchorLink>
 
         <AnchorLink className="navigationItem brand" href="#home">
-          <img src="/jicon.png" width="32" height="32" alt="jicon" />
+          <img
+            src="/jicon.png"
+            width="32"
+            height="32"
+            alt="jicon"
+            onClick={this.closeNav}
+          />
         </AnchorLink>
 
         <AnchorLink className="navigationItem" href="#contact">
-          Contact
+          <div onClick={this.closeNav}>Contact</div>
         </AnchorLink>
 
         <Navbar.Burger onClick={this.toggleNav} className={buttonclass} />
@@ -32,6 +38,10 @@ class Navigation extends Component {
 
   toggleNav = () => {
     this.setState((prev, props) => ({ open: !prev.open }));
+  };
+
+  closeNav = () => {
+    this.setState({ open: false });
   };
 }
 
