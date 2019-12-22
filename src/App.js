@@ -1,9 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./Components/Home";
+import Navigation from "Components/Navigation";
 
 function App() {
-  return <div>v 0.1</div>;
+  return (
+    <div>
+      <Navigation></Navigation>
+      <Home semester="third"></Home>
+    </div>
+  );
 }
 
 export default App;
