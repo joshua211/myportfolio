@@ -29,7 +29,7 @@ const Home = props => {
           </Container>
         </Hero.Body>
       </Hero>
-      <Parallax bgImage={paraimage} strength={500}>
+      <Parallax bgImage={paraimage} strength={800}>
         <div className="insideParallex">
           <AnchorLink href="#timeline">
             <FontAwesomeIcon icon={faChevronDown} />
