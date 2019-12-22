@@ -1,38 +1,38 @@
 import React, { Component } from "react";
 import Navbar from "react-bulma-components/lib/components/navbar";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import "./Navigation.scss";
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { open: false };
   }
   render() {
+    var navclass = this.state.open ? "navigation open" : "navigation";
+    var buttonclass = this.state.open ? "burger is-active" : "burger";
     return (
-      <Navbar>
-        <Navbar.Brand>
-          <Navbar.Item>
-            <img src="/jicon.png" width="32" height="32" alt="jicon" />
-          </Navbar.Item>
-          <Navbar.Burger />
-        </Navbar.Brand>
-        <Navbar.Menu>
-          <Navbar.Container position="start"></Navbar.Container>
-          <Navbar.Container position="end">
-            <Navbar.Item renderAs="div">
-              <AnchorLink href="home">Home</AnchorLink>
-            </Navbar.Item>
-            <Navbar.Item renderAs="div">
-              <AnchorLink href="timeline">Timeline</AnchorLink>
-            </Navbar.Item>
-            <Navbar.Item renderAs="div">
-              <AnchorLink href="contact">Contact</AnchorLink>
-            </Navbar.Item>
-          </Navbar.Container>
-        </Navbar.Menu>
-      </Navbar>
+      <div className={navclass}>
+        <AnchorLink className="navigationItem" href="#timeline">
+          Timeline
+        </AnchorLink>
+
+        <AnchorLink className="navigationItem brand" href="#home">
+          <img src="/jicon.png" width="32" height="32" alt="jicon" />
+        </AnchorLink>
+
+        <AnchorLink className="navigationItem" href="#contact">
+          Contact
+        </AnchorLink>
+
+        <Navbar.Burger onClick={this.toggleNav} className={buttonclass} />
+      </div>
     );
   }
+
+  toggleNav = () => {
+    this.setState((prev, props) => ({ open: !prev.open }));
+  };
 }
 
 export default Navigation;
