@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bulma-components/lib/components/navbar";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 class Navigation extends Component {
@@ -10,31 +9,27 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg">
-        <Navbar.Brand href="#home">
-          <img
-            src="/jicon.png"
-            alt="jicon"
-            href="jicon"
-            width="32px"
-            height="32px"
-          />
+      <Navbar>
+        <Navbar.Brand>
+          <Navbar.Item>
+            <img src="/jicon.png" width="32" height="32" alt="jicon" />
+          </Navbar.Item>
+          <Navbar.Burger />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto"></Nav>
-          <Nav>
-            <Nav.Link>
-              <AnchorLink href="#home">Home</AnchorLink>
-            </Nav.Link>
-            <Nav.Link>
-              <AnchorLink href="#timeline">Timeline</AnchorLink>
-            </Nav.Link>
-            <Nav.Link>
-              <AnchorLink href="#contact">Contact</AnchorLink>
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+        <Navbar.Menu>
+          <Navbar.Container position="start"></Navbar.Container>
+          <Navbar.Container position="end">
+            <Navbar.Item renderAs="div">
+              <AnchorLink href="home">Home</AnchorLink>
+            </Navbar.Item>
+            <Navbar.Item renderAs="div">
+              <AnchorLink href="timeline">Timeline</AnchorLink>
+            </Navbar.Item>
+            <Navbar.Item renderAs="div">
+              <AnchorLink href="contact">Contact</AnchorLink>
+            </Navbar.Item>
+          </Navbar.Container>
+        </Navbar.Menu>
       </Navbar>
     );
   }
