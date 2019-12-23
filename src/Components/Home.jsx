@@ -17,11 +17,15 @@ const Home = props => {
         <Hero.Body>
           <Container>
             <Heading>Hey there!</Heading>
-            My name is Joshua Hillmann and Im 20 years old. <br></br>
-            Im currently studying computer science in Dortmund and Im in my{" "}
-            {props.semester} semester.
+            <div className="intro">
+              My name is Joshua Hillmann and Im 20 years old. <br></br>
+              Im currently studying computer science in Dortmund and Im in my{" "}
+              {props.semester} semester.
+            </div>
             <div className="jumpto">
-              <Heading subtitle>Got something to tell me?</Heading>
+              <Heading size={4} subtitle>
+                Got something you want to tell me?
+              </Heading>
               <AnchorLink className="btn" href="#contact">
                 Contact me!
               </AnchorLink>
