@@ -57,14 +57,16 @@
 
 .tagContainer {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
     width: 40vw;
+    margin-left: 15%;
 
     .tag {
-        margin: 0;
+        margin-right: 2px;
         font-weight: 600;
         background-color: #D2EBF0;
+
     }
 }
 
@@ -77,7 +79,7 @@
         margin-left: 25%;
 
         .tag {
-            margin: 5px 5px;
+            margin: 2px 2px;
         }
     }
 }
