@@ -10,12 +10,13 @@ import {
   Input,
   Textarea
 } from "react-bulma-components/lib/components/form";
-import Button from "react-bulma-components/lib/components/button";
+import { Button } from "react-bulma-components";
 
 class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      validated: false,
       subject: "",
       email: "",
       message: ""
@@ -60,7 +61,7 @@ class Contact extends Component {
               ></Textarea>
             </Field>
             <Field>
-              <Button>Go!</Button>
+              <Button className="Disabled">Go!</Button>
             </Field>
           </div>
         </Container>
@@ -70,7 +71,19 @@ class Contact extends Component {
 
   onChange = e => {
     var value = e.target.value;
-    this.setState({ [e.target.id]: value });
+    this.setState({ [e.target.id]: value }, this.validateInput);
+  };
+
+  validateInput = () => {
+    var isvalid = true;
+    if (!this.state.subject && !this.state.message) {
+      isvalid = false;
+    }
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(String(this.state.email).toLowerCase())) {
+      isvalid = false;
+    }
+    this.setState({ validate: isvalid });
   };
 }
 
