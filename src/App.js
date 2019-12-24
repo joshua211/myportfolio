@@ -5,6 +5,7 @@ import "react-bulma-components/dist/react-bulma-components.min.css";
 import Home from "./Components/Home";
 import Navigation from "Components/Navigation";
 import Timeline from "Components/Timeline";
+import Contact from "Components/Contact";
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class App extends Component {
         <Navigation></Navigation>
         <Home semester="third"></Home>
         <Timeline items={this.state.timelineItems}></Timeline>
+        <Contact></Contact>
       </div>
     );
   }
