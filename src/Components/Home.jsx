@@ -3,6 +3,7 @@ import Hero from "react-bulma-components/lib/components/hero";
 import Heading from "react-bulma-components/lib/components/heading";
 import Container from "react-bulma-components/lib/components/container";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import CoolButton from "./CoolButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Parallax } from "react-parallax";
@@ -26,9 +27,9 @@ const Home = props => {
               <Heading size={4} subtitle>
                 Got something you want to tell me?
               </Heading>
-              <AnchorLink className="btn" href="#contact">
+              <CoolButton renderAs="link" href="#contact">
                 Contact me!
-              </AnchorLink>
+              </CoolButton>
             </div>
           </Container>
         </Hero.Body>

@@ -10,7 +10,7 @@ import {
   Input,
   Textarea
 } from "react-bulma-components/lib/components/form";
-import { Button } from "react-bulma-components";
+import CoolButton from "./CoolButton";
 
 class Contact extends Component {
   constructor(props) {
@@ -61,13 +61,19 @@ class Contact extends Component {
               ></Textarea>
             </Field>
             <Field>
-              <Button className="Disabled">Go!</Button>
+              <CoolButton id="toContact" onClick={this.onClick}>
+                Go!
+              </CoolButton>
             </Field>
           </div>
         </Container>
       </Section>
     );
   }
+
+  onClick = e => {
+    console.log("click");
+  };
 
   onChange = e => {
     var value = e.target.value;
