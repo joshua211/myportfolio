@@ -1,0 +1,15 @@
+#contact {
+
+    background-color: #F08C7B;
+
+}
+
+.form {
+    width: 50vw;
+}
+
+@media (max-width: 600px) {
+    .form {
+        width: 95%;
+    }
+}
