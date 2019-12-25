@@ -31,6 +31,12 @@ const Home = props => {
                 Contact me!
               </CoolButton>
             </div>
+            <div className="gitTag">
+              Or check out my{" "}
+              <a href="https://github.com/joshua211" target="_blank">
+                Github!
+              </a>
+            </div>
           </Container>
         </Hero.Body>
       </Hero>
