@@ -3,7 +3,9 @@ import "./Foot.scss";
 import Footer from "react-bulma-components/lib/components/footer";
 import Level from "react-bulma-components/lib/components/level";
 import Columns from "react-bulma-components/lib/components/columns";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faSpotify,
@@ -41,6 +43,21 @@ const Foot = () => {
           </Columns>
         </Level.Item>
       </Level>
+      <Columns id="copyrightLevel">
+        <Columns.Column>
+          Build with {"    "}
+          <a href="https://reactjs.org/">React</a>,{" "}
+          <a href="https://docs.microsoft.com/de-de/dotnet/core/">.Net Core</a>,{" "}
+          <a href="https://bulma.io/">Bulma</a> and{" "}
+          <FontAwesomeIcon style={{ color: "red" }} icon={faHeart} />
+        </Columns.Column>
+        <Columns.Column className="nameTag">
+          &copy; Joshua Hillmann
+        </Columns.Column>
+        <Columns.Column className="toTopLink">
+          <AnchorLink href="#home">Back to the top</AnchorLink>
+        </Columns.Column>
+      </Columns>
     </Footer>
   );
 };

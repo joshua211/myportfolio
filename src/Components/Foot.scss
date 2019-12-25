@@ -2,3 +2,27 @@
     font-size: 3em;
     color: rgb(71, 71, 71);
 }
+
+#copyrightLevel {
+    margin: 5em auto -4em;
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+        display: inline-block;
+        width: 33%;
+    }
+}
+
+@media(min-width: 600px) {
+    .nameTag {
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .toTopLink {
+        display: flex !important;
+        justify-content: flex-end;
+    }
+
+}
