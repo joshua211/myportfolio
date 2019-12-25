@@ -8,6 +8,15 @@
     width: 50vw;
 }
 
+.hidden {
+    opacity: 0;
+}
+
+.validationInfo {
+    color: ghostwhite;
+    font-family: Ubuntu, Source Sans pro, Helvetica, sans-serif;
+}
+
 @media (max-width: 600px) {
     .form {
         width: 95%;

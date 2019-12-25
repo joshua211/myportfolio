@@ -17,6 +17,8 @@ class Contact extends Component {
     super(props);
     this.state = {
       validated: false,
+      sendFail: false,
+      pending: false,
       subject: "",
       email: "",
       message: ""
@@ -61,9 +63,22 @@ class Contact extends Component {
               ></Textarea>
             </Field>
             <Field>
-              <CoolButton id="toContact" onClick={this.onClick}>
-                Go!
+              <CoolButton
+                id="toContact"
+                className={this.state.pending ? "button is-loading" : ""}
+                disabled={this.state.validated ? false : true}
+                onClick={this.onClick}
+              >
+                Send!
               </CoolButton>
+            </Field>
+            <Field
+              className={
+                this.state.sendFail ? "validationInfo" : "validationInfo hidden"
+              }
+            >
+              You have to enter a subject, a valid E-Mail adress and a message
+              in order to contact me!
             </Field>
           </div>
         </Container>
@@ -72,7 +87,14 @@ class Contact extends Component {
   }
 
   onClick = e => {
-    console.log("click");
+    if (!this.state.validated) {
+      this.setState({ sendFail: true });
+      return;
+    } else {
+      this.setState({ sendFail: false, pending: true });
+    }
+
+    //Send mail stuff
   };
 
   onChange = e => {
@@ -81,15 +103,18 @@ class Contact extends Component {
   };
 
   validateInput = () => {
-    var isvalid = true;
-    if (!this.state.subject && !this.state.message) {
-      isvalid = false;
-    }
+    var isvalid = false;
+
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!re.test(String(this.state.email).toLowerCase())) {
-      isvalid = false;
+    if (
+      re.test(String(this.state.email).toLowerCase()) &&
+      this.state.subject &&
+      this.state.message
+    ) {
+      isvalid = true;
     }
-    this.setState({ validate: isvalid });
+
+    this.setState({ validated: isvalid });
   };
 }
 

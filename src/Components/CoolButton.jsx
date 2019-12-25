@@ -6,13 +6,17 @@ const CoolButton = ({
   children,
   onClick,
   renderAs = "button",
+  className = "",
   disabled = false,
   href = ""
 }) => {
   switch (renderAs) {
     case "button":
       return (
-        <div className={disabled ? "btn disabled" : "btn"} onClick={onClick}>
+        <div
+          className={disabled ? "btn disabled" : "btn " + className}
+          onClick={onClick}
+        >
           {children}
         </div>
       );
