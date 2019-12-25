@@ -15,6 +15,7 @@
 .validationInfo {
     color: ghostwhite;
     font-family: Ubuntu, Source Sans pro, Helvetica, sans-serif;
+    transition: opacity 0.5s ease-in-out;
 }
 
 @media (max-width: 600px) {

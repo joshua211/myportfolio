@@ -77,7 +77,7 @@ class Contact extends Component {
                 this.state.sendFail ? "validationInfo" : "validationInfo hidden"
               }
             >
-              You have to enter a subject, a valid E-Mail adress and a message
+              You have to enter a subject, a valid E-Mail address and a message
               in order to contact me!
             </Field>
           </div>
