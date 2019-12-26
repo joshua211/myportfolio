@@ -10,7 +10,9 @@ import { Parallax } from "react-parallax";
 import "./Home.scss";
 
 const paraimage = require("../assets/parabackground.png");
-
+//ToDo:
+//  Smooth out navigation animation
+//  Fix send button in mobile
 const Home = props => {
   return (
     <div id="home">
@@ -37,6 +39,7 @@ const Home = props => {
                 Github!
               </a>
             </div>
+            <div className="divider"></div>
           </Container>
         </Hero.Body>
       </Hero>
