@@ -5,12 +5,8 @@ import Level from "react-bulma-components/lib/components/level";
 import Columns from "react-bulma-components/lib/components/columns";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faSpotify,
-  faInstagram
-} from "@fortawesome/free-brands-svg-icons";
+import { faHeart, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const Foot = () => {
   return (
@@ -38,11 +34,11 @@ const Foot = () => {
             </Columns.Column>
             <Columns.Column>
               <a
-                href="https://open.spotify.com/user/lyly211?si=XwhQiqtGTzmnaI5_hWn_8Q"
+                href="mailto:joshua-hillmann@gmx.de"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FontAwesomeIcon className="footerIcon" icon={faSpotify} />
+                <FontAwesomeIcon className="footerIcon" icon={faEnvelope} />
               </a>
             </Columns.Column>
           </Columns>
