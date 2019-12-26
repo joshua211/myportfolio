@@ -2,7 +2,6 @@ import "./Timeline.scss";
 import Section from "react-bulma-components/lib/components/section";
 import Heading from "react-bulma-components/lib/components/heading";
 import Container from "react-bulma-components/lib/components/container";
-import Columns from "react-bulma-components/lib/components/columns";
 import TimelineItem from "./TimelineItem";
 
 import React, { Component } from "react";

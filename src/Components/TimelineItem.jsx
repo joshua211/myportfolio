@@ -1,7 +1,6 @@
 import "./TimelineItem.scss";
-import React, { Component } from "react";
+import React from "react";
 import Tag from "react-bulma-components/lib/components/tag";
-import { Level } from "react-bulma-components";
 
 const TimelineItem = ({ item }) => {
   return (

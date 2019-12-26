@@ -10,9 +10,7 @@ import { Parallax } from "react-parallax";
 import "./Home.scss";
 
 const paraimage = require("../assets/parabackground.png");
-//ToDo:
-//  Smooth out navigation animation
-//  Fix send button in mobile
+
 const Home = props => {
   return (
     <div id="home">
@@ -35,7 +33,11 @@ const Home = props => {
             </div>
             <div className="gitTag">
               Or check out my{" "}
-              <a href="https://github.com/joshua211" target="_blank">
+              <a
+                href="https://github.com/joshua211"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Github!
               </a>
             </div>

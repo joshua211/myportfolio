@@ -30,13 +30,14 @@ const CoolButton = ({
           )}
         </div>
       );
-      break;
     case "link":
       return (
         <AnchorLink className={disabled ? "btn disabled" : "btn"} href={href}>
           {children}
         </AnchorLink>
       );
+    default:
+      return <div>Render error</div>;
   }
 };
 

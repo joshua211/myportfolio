@@ -57,7 +57,7 @@
 
 .tagContainer {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-wrap: wrap;
     width: 40vw;
     margin-left: 15%;
@@ -73,7 +73,7 @@
 @media(max-width: 600px) {
     .tagContainer {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
         width: 40vw;
         margin-left: 25%;

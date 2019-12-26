@@ -11,7 +11,6 @@ import {
   faSpotify,
   faInstagram
 } from "@fortawesome/free-brands-svg-icons";
-import Icon from "react-bulma-components/lib/components/icon";
 
 const Foot = () => {
   return (
@@ -20,7 +19,11 @@ const Foot = () => {
         <Level.Item>
           <Columns>
             <Columns.Column>
-              <a href="https://github.com/joshua211" target="_blank">
+              <a
+                href="https://github.com/joshua211"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FontAwesomeIcon className="footerIcon" icon={faGithub} />
               </a>
             </Columns.Column>
@@ -28,6 +31,7 @@ const Foot = () => {
               <a
                 href="https://www.instagram.com/joshuahillmann/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <FontAwesomeIcon className="footerIcon" icon={faInstagram} />
               </a>
@@ -36,6 +40,7 @@ const Foot = () => {
               <a
                 href="https://open.spotify.com/user/lyly211?si=XwhQiqtGTzmnaI5_hWn_8Q"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <FontAwesomeIcon className="footerIcon" icon={faSpotify} />
               </a>
