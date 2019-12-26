@@ -5,6 +5,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 const CoolButton = ({
   children,
   onClick,
+  isLoading = false,
   renderAs = "button",
   className = "",
   disabled = false,
@@ -17,7 +18,16 @@ const CoolButton = ({
           className={disabled ? "btn disabled" : "btn " + className}
           onClick={onClick}
         >
-          {children}
+          {!isLoading ? (
+            children
+          ) : (
+            <div className="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          )}
         </div>
       );
       break;

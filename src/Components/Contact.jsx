@@ -65,8 +65,10 @@ class Contact extends Component {
             <Field>
               <CoolButton
                 id="toContact"
-                className={this.state.pending ? "button is-loading" : ""}
-                disabled={this.state.validated ? false : true}
+                isLoading={this.state.pending}
+                disabled={
+                  this.state.validated || !this.state.pending ? false : true
+                }
                 onClick={this.onClick}
               >
                 Send!
@@ -90,7 +92,8 @@ class Contact extends Component {
     if (!this.state.validated) {
       this.setState({ sendFail: true });
       return;
-    } else {
+    } else if (this.state.pending) return;
+    else {
       this.setState({ sendFail: false, pending: true });
     }
 
