@@ -16,6 +16,7 @@ class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      justClicked: false,
       validated: false,
       showValidation: false,
       sendSucces: false,
@@ -30,6 +31,8 @@ class Contact extends Component {
       ? "You have to enter a subject, valid Email-Address and a message in order to contact me!"
       : this.state.sendSucces
       ? "Thanks for contacting me!"
+      : this.state.justClicked
+      ? "Please dont send too many messages at once!"
       : "Something went wrong while contacting me!";
 
     return (
@@ -97,13 +100,18 @@ class Contact extends Component {
   }
 
   onClick = e => {
-    if (!this.state.validated) {
-      this.setState({ showValidation: true });
+    if (!this.state.validated || this.state.justClicked) {
+      this.setState({ showValidation: true, sendSucces: false });
       return;
     } else if (this.state.pending) return;
     else {
-      this.setState({ pending: true, showValidation: false });
+      this.setState({
+        pending: true,
+        showValidation: false,
+        justClicked: true
+      });
       this.sendMail(this.state.subject, this.state.email, this.state.message);
+      setTimeout(() => this.setState({ justClicked: false }), 10000);
     }
   };
 
@@ -134,7 +142,10 @@ class Contact extends Component {
 
   onChange = e => {
     var value = e.target.value;
-    this.setState({ [e.target.id]: value }, this.validateInput);
+    this.setState(
+      { [e.target.id]: value, showValidation: false },
+      this.validateInput
+    );
   };
 
   validateInput = () => {
