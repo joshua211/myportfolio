@@ -16,6 +16,7 @@ class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sendError: false,
       justClicked: false,
       validated: false,
       showValidation: false,
@@ -33,7 +34,9 @@ class Contact extends Component {
       ? "Thanks for contacting me!"
       : this.state.justClicked
       ? "Please dont send too many messages at once!"
-      : "Something went wrong while contacting me!";
+      : this.state.sendError
+      ? "Something went wrong while contacting me!"
+      : "";
 
     return (
       <Section id="contact" size="large">
@@ -133,7 +136,7 @@ class Contact extends Component {
             })
           : this.setState({
               pending: false,
-              sendSucces: false,
+              sendError: true,
               showValidation: true
             })
       )
