@@ -4,6 +4,7 @@
 
 ClientApp/node_modules
 timelineItems.json
+emailConfig.json
 
 # User-specific files
 *.suo
