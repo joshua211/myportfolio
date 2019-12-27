@@ -17,7 +17,8 @@ class Contact extends Component {
     super(props);
     this.state = {
       validated: false,
-      sendFail: false,
+      showValidation: false,
+      sendSucces: false,
       pending: false,
       subject: "",
       email: "",
@@ -25,6 +26,12 @@ class Contact extends Component {
     };
   }
   render() {
+    var validationMessage = !this.state.validated
+      ? "You have to enter a subject, valid Email-Address and a message in order to contact me!"
+      : this.state.sendSucces
+      ? "Thanks for contacting me!"
+      : "Something went wrong while contacting me!";
+
     return (
       <Section id="contact" size="large">
         <Container>
@@ -76,11 +83,12 @@ class Contact extends Component {
             </Field>
             <Field
               className={
-                this.state.sendFail ? "validationInfo" : "validationInfo hidden"
+                this.state.showValidation
+                  ? "validationInfo"
+                  : "validationInfo hidden"
               }
             >
-              You have to enter a subject, a valid E-Mail address and a message
-              in order to contact me!
+              {validationMessage}
             </Field>
           </div>
         </Container>
@@ -90,15 +98,39 @@ class Contact extends Component {
 
   onClick = e => {
     if (!this.state.validated) {
-      this.setState({ sendFail: true });
+      this.setState({ showValidation: true });
       return;
     } else if (this.state.pending) return;
     else {
-      this.setState({ sendFail: false, pending: true });
+      this.setState({ pending: true, showValidation: false });
+      this.sendMail(this.state.subject, this.state.email, this.state.message);
     }
-
-    //Send mail stuff
   };
+
+  sendMail(subject, to, message) {
+    var mail = { Subject: subject, From: to, Message: message };
+    fetch("https://localhost:5001/api/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(mail)
+    })
+      .then(r =>
+        r.status === 200
+          ? this.setState({
+              pending: false,
+              sendSucces: true,
+              showValidation: true
+            })
+          : this.setState({
+              pending: false,
+              sendSucces: false,
+              showValidation: true
+            })
+      )
+      .catch(e => console.log("ERROR: ", e));
+  }
 
   onChange = e => {
     var value = e.target.value;

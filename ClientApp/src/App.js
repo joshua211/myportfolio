@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    var res = await fetch("timelineItems.json")
+    var res = await fetch("https://localhost:5001/api/timeline")
       .then(r => r.json())
       .catch(e => console.log("ERROR: ", e));
     console.log(res);

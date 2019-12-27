@@ -9,13 +9,13 @@ const TimelineItem = ({ item }) => {
       <div className="timeline">
         <div className="timepointContainer">
           <span className="timepoint"></span>
-          <span className="date">{item.startdate}</span>
+          <span className="date">{item.startDate}</span>
         </div>
 
         <span className="line"></span>
         <div className="timepointContainer">
           <span className="timepoint"></span>
-          <span className="date">{item.enddate}</span>
+          <span className="date">{item.endDate}</span>
         </div>
       </div>
       {item.tags && (
