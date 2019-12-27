@@ -10,20 +10,24 @@ namespace myportfolio.Controllers
     [Route("/api/timeline")]
     public class TimelineController : Controller
     {
+        private List<TimelineItem> _items;
+
+        public TimelineController()
+        {
+            string json = System.IO.File.ReadAllText("./timelineItems.json");
+            _items = JsonConvert.DeserializeObject<List<TimelineItem>>(json);
+        }
+
         [HttpGet]
         public List<TimelineItem> GetTimelineItems()
         {
-            string json = System.IO.File.ReadAllText("./timelineItems.json");
-
-            return JsonConvert.DeserializeObject<List<TimelineItem>>(json);
+            return _items;
         }
 
         [HttpGet("{index}")]
         public TimelineItem GetTimelineItem(int index)
         {
-            string json = System.IO.File.ReadAllText("./timelineItems.json");
-            var list = JsonConvert.DeserializeObject<List<TimelineItem>>(json);
-            return list[index];
+            return _items[index];
         }
 
 

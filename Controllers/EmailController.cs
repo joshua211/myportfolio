@@ -12,7 +12,7 @@ namespace myportfolio.Controllers
     [Route("/api/email")]
     public class EmailController : Controller
     {
-        Dictionary<string, string> _config;
+        private Dictionary<string, string> _config;
 
         public EmailController()
         {
