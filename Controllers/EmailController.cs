@@ -30,7 +30,7 @@ namespace myportfolio.Controllers
 
             message.Body = new TextPart("plain")
             {
-                Text = email.Message
+                Text = $"New Message from {email.From} \n\n {email.Message}"
             };
 
             using (var client = new SmtpClient())
