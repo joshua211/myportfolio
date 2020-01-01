@@ -120,7 +120,7 @@ class Contact extends Component {
 
   sendMail(subject, to, message) {
     var mail = { Subject: subject, From: to, Message: message };
-    fetch("https://localhost:5001/api/email", {
+    fetch("https://joshuahillmann.com/api/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
