@@ -15,10 +15,9 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    var res = await fetch("https://localhost:5001/api/timeline")
+    var res = await fetch("https://joshuahillmann.com/api/timeline")
       .then(r => r.json())
       .catch(e => console.log("ERROR: ", e));
-    console.log(res);
     this.setState({ timelineItems: res });
   }
 

@@ -1,26 +1,24 @@
 #contact {
-
-    background-color: #F08C7B;
-
+  background-color: #f08c7b;
 }
 
 .form {
-    width: 50vw;
+  width: 50vw;
 }
 
 .hidden {
-    opacity: 0;
-    height: 200px;
+  opacity: 0;
+  height: 50px;
 }
 
 .validationInfo {
-    color: ghostwhite;
-    font-family: Ubuntu, Source Sans pro, Helvetica, sans-serif;
-    transition: opacity 0.5s ease-in-out;
+  color: ghostwhite;
+  font-family: Ubuntu, Source Sans pro, Helvetica, sans-serif;
+  transition: opacity 0.5s ease-in-out;
 }
 
 @media (max-width: 600px) {
-    .form {
-        width: 95%;
-    }
+  .form {
+    width: 95%;
+  }
 }
