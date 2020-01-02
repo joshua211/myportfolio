@@ -7,9 +7,8 @@ import CoolButton from "./CoolButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Parallax } from "react-parallax";
+import { isMobile } from "react-device-detect";
 import "./Home.scss";
-
-const paraimage = require("../assets/parabackground.png");
 
 const Home = props => {
   return (
@@ -19,8 +18,8 @@ const Home = props => {
           <Container>
             <Heading>Hey there!</Heading>
             <div className="intro">
-              My name is Joshua Hillmann and Im 20 years old. <br></br>
-              Im currently studying computer science in Dortmund and Im in my{" "}
+              My name is Joshua Hillmann and I'm 20 years old. <br></br>
+              I'm currently studying computer science in Dortmund and I'm in my{" "}
               {props.semester} semester.
             </div>
             <div className="jumpto">
@@ -45,7 +44,10 @@ const Home = props => {
           </Container>
         </Hero.Body>
       </Hero>
-      <Parallax bgImage={paraimage} strength={800}>
+      <Parallax
+        bgImage={isMobile ? "parabackgroundMobile.png" : "parabackground.png"}
+        strength={800}
+      >
         <div className="insideParallex">
           <AnchorLink href="#timeline">
             <FontAwesomeIcon icon={faChevronDown} />
