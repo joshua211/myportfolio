@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import posed from "react-pose";
 
-const Box = posed.div({
+const Animation = posed.div({
   visible: { opacity: 1, transition: { duration: 1500 } },
   hidden: { opacity: 0 }
 });
@@ -18,9 +18,9 @@ class Wrapper extends Component {
 
   render() {
     return (
-      <Box className="box" pose={this.state.isVisible ? "visible" : "hidden"}>
+      <Animation pose={this.state.isVisible ? "visible" : "hidden"}>
         {this.props.children}
-      </Box>
+      </Animation>
     );
   }
 }
