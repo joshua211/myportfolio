@@ -6,6 +6,7 @@ using MailKit.Security;
 using myportfolio.Models;
 using System.Collections.Generic;
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace myportfolio.Controllers
 {
@@ -13,9 +14,12 @@ namespace myportfolio.Controllers
     public class EmailController : Controller
     {
         private Dictionary<string, string> _config;
+        private readonly ILogger _logger;
 
-        public EmailController()
+        public EmailController(ILogger<EmailController> logger)
         {
+            this._logger = logger;
+
             var json = System.IO.File.ReadAllText("emailConfig.json");
             _config = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
         }
@@ -23,6 +27,8 @@ namespace myportfolio.Controllers
         [HttpPost]
         public void SendMail([FromBody] Email email)
         {
+            _logger.LogInformation($"Received Request to send mail: {email.ToString()}");
+
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(email.From));
             message.To.Add(new MailboxAddress(_config["receiverAddress"]));

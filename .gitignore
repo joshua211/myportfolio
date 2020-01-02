@@ -5,6 +5,8 @@
 ClientApp/node_modules
 timelineItems.json
 emailConfig.json
+emailConfigGoogle.json
+/Logs
 
 # User-specific files
 *.suo
