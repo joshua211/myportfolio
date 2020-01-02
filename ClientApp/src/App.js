@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import "react-bulma-components/dist/react-bulma-components.min.css";
-
+import Wrapper from "./Components/Wrapper";
 import Home from "./Components/Home";
 import Navigation from "Components/Navigation";
 import Timeline from "Components/Timeline";
@@ -23,13 +23,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         <Navigation />
         <Home semester="third" />
         <Timeline items={this.state.timelineItems} />
         <Contact />
         <Foot />
-      </div>
+      </Wrapper>
     );
   }
 }
