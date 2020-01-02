@@ -12,15 +12,22 @@ import {
 } from "react-bulma-components/lib/components/form";
 import CoolButton from "./CoolButton";
 
+const ContactStates = {
+  valid: "",
+  notValid:
+    "You have to enter a subject, valid Email-Address and a message in order to contact me!",
+  succes: "Thanks for contacting me!",
+  error: "Something went wrong while contacting me!",
+  spam: "Please dont send too many messages at once!"
+};
+
 class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sendError: false,
-      justClicked: false,
+      validationMessage: ContactStates.notValid,
       validated: false,
       showValidation: false,
-      sendSucces: false,
       pending: false,
       subject: "",
       email: "",
@@ -28,16 +35,6 @@ class Contact extends Component {
     };
   }
   render() {
-    var validationMessage = !this.state.validated
-      ? "You have to enter a subject, valid Email-Address and a message in order to contact me!"
-      : this.state.sendSucces
-      ? "Thanks for contacting me!"
-      : this.state.justClicked
-      ? "Please dont send too many messages at once!"
-      : this.state.sendError
-      ? "Something went wrong while contacting me!"
-      : "";
-
     return (
       <Section id="contact" size="large">
         <Container>
@@ -94,7 +91,7 @@ class Contact extends Component {
                   : "validationInfo hidden"
               }
             >
-              {validationMessage}
+              {this.state.validationMessage}
             </Field>
           </div>
         </Container>
@@ -103,8 +100,18 @@ class Contact extends Component {
   }
 
   onClick = e => {
-    if (!this.state.validated || this.state.justClicked) {
-      this.setState({ showValidation: true, sendSucces: false });
+    if (!this.state.validated) {
+      this.setState({
+        showValidation: true,
+        validationMessage: ContactStates.notValid
+      });
+      return;
+    }
+    if (this.state.justClicked) {
+      this.setState({
+        showValidation: true,
+        validationMessage: ContactStates.spam
+      });
       return;
     } else if (this.state.pending) return;
     else {
@@ -131,16 +138,23 @@ class Contact extends Component {
         r.status === 200
           ? this.setState({
               pending: false,
-              sendSucces: true,
+              validationMessage: ContactStates.succes,
               showValidation: true
             })
           : this.setState({
               pending: false,
-              sendError: true,
+              validationMessage: ContactStates.error,
               showValidation: true
             })
       )
-      .catch(e => console.log("ERROR: ", e));
+      .catch(e => {
+        console.log("ERROR: ", e);
+        this.setState({
+          pending: false,
+          validationMessage: ContactStates.error,
+          showValidation: true
+        });
+      });
   }
 
   onChange = e => {
