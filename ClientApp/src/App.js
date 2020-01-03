@@ -7,6 +7,7 @@ import Navigation from "Components/Navigation";
 import Timeline from "Components/Timeline";
 import Contact from "Components/Contact";
 import Foot from "Components/Foot";
+import { differenceInQuarters } from "date-fns";
 
 class App extends Component {
   constructor(props) {
@@ -25,13 +26,40 @@ class App extends Component {
     return (
       <Wrapper>
         <Navigation />
-        <Home semester="third" />
+        <Home semester={this.getSemester()} age={this.getAge()} />
         <Timeline items={this.state.timelineItems} />
         <Contact />
         <Foot />
       </Wrapper>
     );
   }
+
+  getAge = () => {
+    const date = new Date();
+    date.setFullYear(date.getFullYear() - 1999);
+    date.setMonth(date.getMonth() - 4);
+    date.setDate(date.getDate() - 21);
+    return date.getFullYear();
+  };
+
+  getSemester = () => {
+    const startDate = new Date(2018, 8);
+    const currentDate = new Date();
+
+    var semester = Math.ceil(differenceInQuarters(currentDate, startDate) / 2);
+    return Semesters[semester];
+  };
 }
+
+const Semesters = {
+  1: "first",
+  2: "second",
+  3: "third",
+  4: "fourth",
+  5: "fith",
+  6: "sixth",
+  7: "seventh",
+  8: "eight"
+};
 
 export default App;

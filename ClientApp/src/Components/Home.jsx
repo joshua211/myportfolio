@@ -18,7 +18,8 @@ const Home = props => {
           <Container>
             <Heading>Hey there!</Heading>
             <div className="intro">
-              My name is Joshua Hillmann and I'm 20 years old. <br></br>
+              My name is Joshua Hillmann and I'm {props.age} years old.{" "}
+              <br></br>
               I'm currently studying computer science in Dortmund and I'm in my{" "}
               {props.semester} semester.
             </div>
