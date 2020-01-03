@@ -31,7 +31,7 @@ namespace myportfolio
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -43,8 +43,6 @@ namespace myportfolio
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            logger.AddFile("Logs/log-{Date}.txt");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
