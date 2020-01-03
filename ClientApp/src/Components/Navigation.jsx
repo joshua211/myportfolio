@@ -6,10 +6,28 @@ import "./Navigation.scss";
 class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { open: false, posY: 0, hideOnScroll: false };
   }
+
+  componentDidMount() {
+    this.state.posY = window.scrollY;
+    window.addEventListener("scroll", e => this.handleScroll(e));
+  }
+
+  handleScroll = e => {
+    const window = e.currentTarget;
+
+    if (this.state.posY > window.scrollY) {
+      this.setState({ hideOnScroll: false });
+    } else if (this.state.posY < window.scrollY) {
+      this.setState({ hideOnScroll: true });
+    }
+    this.setState({ posY: window.scrollY });
+  };
+
   render() {
     var navclass = this.state.open ? "navigation open" : "navigation";
+    navclass = this.state.hideOnScroll ? navclass + " hideOnScroll" : navclass;
     var buttonclass = this.state.open ? "burger is-active" : "burger";
     return (
       <div className={navclass}>
