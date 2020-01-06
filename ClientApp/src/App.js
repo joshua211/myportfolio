@@ -7,24 +7,34 @@ import Navigation from "Components/Navigation";
 import Timeline from "Components/Timeline";
 import Contact from "Components/Contact";
 import Foot from "Components/Foot";
+import Snackbar from "Components/Snackbar";
 import { differenceInQuarters } from "date-fns";
+import { isIE, isEdge } from "react-device-detect";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { timelineItems: [] };
+    this.state = { timelineItems: [], oldBrowserWarning: false };
   }
 
   async componentDidMount() {
     var res = await fetch("https://joshuahillmann.com/api/timeline")
       .then(r => r.json())
       .catch(e => console.log("ERROR: ", e));
-    this.setState({ timelineItems: res });
+
+    var oldbrowser = isIE || isEdge;
+    this.setState({ timelineItems: res, oldBrowserWarning: oldbrowser });
   }
 
   render() {
     return (
       <Wrapper>
+        {this.state.oldBrowserWarning && (
+          <Snackbar onClick={() => this.setState({ oldBrowserWarning: false })}>
+            Sorry for the inconvenience, but this website does not support your
+            browser or browser version and may look a bit odd!
+          </Snackbar>
+        )}
         <Navigation />
         <Home semester={this.getSemester()} age={this.getAge()} />
         <Timeline items={this.state.timelineItems} />
