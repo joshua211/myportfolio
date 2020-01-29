@@ -31,11 +31,11 @@ class Navigation extends Component {
     var buttonclass = this.state.open ? "burger is-active" : "burger";
     return (
       <div className={navclass}>
-        <AnchorLink offset="50" className="navigationItem" href="#timeline">
+        <AnchorLink offset="20" className="navigationItem" href="#timeline">
           <div onClick={this.closeNav}>Timeline</div>
         </AnchorLink>
 
-        <AnchorLink offset="50" className="navigationItem brand" href="#home">
+        <AnchorLink offset="0" className="navigationItem brand" href="#home">
           <img
             src="/jicon.png"
             width="32"
@@ -45,7 +45,7 @@ class Navigation extends Component {
           />
         </AnchorLink>
 
-        <AnchorLink offset="50" className="navigationItem" href="#contact">
+        <AnchorLink offset="0" className="navigationItem" href="#contact">
           <div onClick={this.closeNav}>Contact</div>
         </AnchorLink>
 
@@ -59,7 +59,7 @@ class Navigation extends Component {
   };
 
   closeNav = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, hideOnScroll: true });
   };
 }
 
