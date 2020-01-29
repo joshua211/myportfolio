@@ -45,16 +45,18 @@ const Home = props => {
           </Container>
         </Hero.Body>
       </Hero>
-      <Parallax
-        bgImage={isMobile ? "parabackgroundMobile.png" : "parabackground.png"}
-        strength={800}
-      >
-        <div className="insideParallex">
-          <AnchorLink href="#timeline">
-            <FontAwesomeIcon icon={faChevronDown} />
-          </AnchorLink>
-        </div>
-      </Parallax>
+      {true && (
+        <Parallax
+          bgImage={isMobile ? "" : "parabackgroundMobile.png"}
+          strength={800}
+        >
+          <div className="insideParallex">
+            <AnchorLink href="#timeline">
+              <FontAwesomeIcon icon={faChevronDown} />
+            </AnchorLink>
+          </div>
+        </Parallax>
+      )}
     </div>
   );
 };
