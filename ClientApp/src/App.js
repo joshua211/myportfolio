@@ -8,7 +8,7 @@ import Timeline from "Components/Timeline";
 import Contact from "Components/Contact";
 import Foot from "Components/Foot";
 import Snackbar from "Components/Snackbar";
-import { differenceInQuarters } from "date-fns";
+import { differenceInMonths } from "date-fns";
 import { isIE, isEdge } from "react-device-detect";
 
 class App extends Component {
@@ -19,8 +19,8 @@ class App extends Component {
 
   async componentDidMount() {
     var res = await fetch("https://joshuahillmann.com/api/timeline")
-      .then(r => r.json())
-      .catch(e => console.log("ERROR: ", e));
+      .then((r) => r.json())
+      .catch((e) => console.log("ERROR: ", e));
 
     var oldbrowser = isIE || isEdge;
     this.setState({ timelineItems: res, oldBrowserWarning: oldbrowser });
@@ -56,7 +56,9 @@ class App extends Component {
     const startDate = new Date(2018, 8);
     const currentDate = new Date();
 
-    var semester = Math.ceil(differenceInQuarters(currentDate, startDate) / 2);
+    var semester = Math.ceil(
+      (differenceInMonths(currentDate, startDate) + 1) / 6
+    );
     return Semesters[semester];
   };
 }
@@ -69,7 +71,7 @@ const Semesters = {
   5: "fith",
   6: "sixth",
   7: "seventh",
-  8: "eight"
+  8: "eight",
 };
 
 export default App;
